@@ -8,9 +8,10 @@
 
 'use strict';
 
-var cli     = require('cli'),
-    fs      = require('fs'),
-    gpsUtil = require('gps-util');
+var cli      = require('cli'),
+    fs       = require('fs'),
+    gpsUtil  = require('gps-util'),
+    Timeline = require('./models/timeline.js');
 
 var keyedArgs   = {},
     usageString = 'Usage: > node deadsimple-geotagger -g [path to gpx file]',
@@ -64,8 +65,12 @@ cli.main(function(args, options) {
 
 		content['flickr'] = require('./test-data/flickr-people-photos.json');
 
-		console.log('gpsData', gpsData);
-		console.log('flickrData', content['flickr']);
+		//console.log('gpsData', gpsData);
+		//console.log('flickrData', content['flickr']);
+
+		var timeline = new Timeline(gpsData);
+
+		console.log(timeline.at(1).getMoment().year());
 
 	});
 

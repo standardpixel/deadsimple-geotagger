@@ -15,7 +15,9 @@
   "license": "BSD",
   "dependencies": {
     "cli": "~0.6.3",
-    "gps-util": "0.0.25"
+    "gps-util": "0.0.25",
+    "backbone": "~1.1.2",
+    "moment": "~2.6.0"
   },
   "devDependencies": {
     "mocha": "~1.20.1",
