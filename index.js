@@ -11,11 +11,11 @@
 var cli      = require('cli'),
     fs       = require('fs'),
     gpsUtil  = require('gps-util'),
-    Timeline = require('./models/timeline.js');
+    Timeline = require('./models/timeline.js'),
+    Content  = require('./models/content.js');
 
 var keyedArgs   = {},
     usageString = 'Usage: > node deadsimple-geotagger -g [path to gpx file]',
-    content     = {},
     rawGeoData;
 
 cli.main(function(args, options) {
@@ -63,14 +63,16 @@ cli.main(function(args, options) {
 		// Get Flickr data
 		//
 
-		content['flickr'] = require('./test-data/flickr-people-photos.json');
-
 		//console.log('gpsData', gpsData);
 		//console.log('flickrData', content['flickr']);
 
+		//console.log(require('./test-data/flickr-people-photos.json'));
+
 		var timeline = new Timeline(gpsData);
 
-		console.log(timeline.at(1).getMoment().year());
+		var content = new Content(require('./test-data/flickr-people-photos.json').photos.photo);
+
+		console.log('content', content.at(0).getType());
 
 	});
 

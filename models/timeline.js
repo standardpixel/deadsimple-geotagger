@@ -3,11 +3,9 @@
 var Backbone = require('backbone'),
     moment   = require('moment');
 
-var Collection, Model;
+var Timeline;
 
-
-
-Collection = Backbone.Collection.extend({
+Timeline = Backbone.Collection.extend({
 	model : Backbone.Model.extend({
 		getMoment : function() {
 			return moment(this.get('time'));
@@ -15,4 +13,4 @@ Collection = Backbone.Collection.extend({
 	})
 });
 
-module.exports = Collection;
+module.exports = Timeline;
